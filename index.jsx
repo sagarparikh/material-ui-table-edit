@@ -247,6 +247,7 @@ module.exports = React.createClass({
         <RaisedButton
           onClick={onButtonClick}
           style={buttonStyle}
+					secondary={true}
           label='Add Row'
         />
       </div>
