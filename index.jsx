@@ -3,9 +3,10 @@ const mui = require('material-ui')
 const ModeEdit = require('material-ui/svg-icons/editor/mode-edit').default
 const Check = require('material-ui/svg-icons/navigation/check').default
 const times = require('lodash.times')
+const mobx_react = require('mobx-react');
 const {IconButton, Toggle, TextField, RaisedButton} = mui
 
-module.exports = React.createClass({
+module.exports = mobx_react.observer(React.createClass({
   getDefaultProps: () => {
     return {
       headerColumns: [],
@@ -253,4 +254,4 @@ module.exports = React.createClass({
       </div>
     )
   }
-})
+}))
