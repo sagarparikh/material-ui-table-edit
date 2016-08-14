@@ -46,7 +46,6 @@ module.exports = mobx_react.observer(React.createClass({
     const header = cell && cell.header
     const width = cell && cell.width
     const textFieldId = [id, rowId, header].join('-')
-
     const textFieldStyle = {
       width: width
     }
@@ -88,9 +87,12 @@ module.exports = mobx_react.observer(React.createClass({
         }
       }
     }
-
-		if(typ == 'FlatButton'){
-			return <FlatButton label="Manage" />	
+		if(type == 'FlatButton'){
+		return <FlatButton label={"Manage"} secondary={true}
+									onClick={()=>{
+										this.props.actionCallback(value, cell);							
+									}}
+							/>	
 		}
 
     return <TextField
@@ -214,7 +216,7 @@ module.exports = mobx_react.observer(React.createClass({
       marginTop: 10
     }
 
-    @observer rows = this.state.rows
+    let rows = mobx_react.observer(this.state.rows);
     const columnTypes = this.props.headerColumns.map((header) => {
       return header.type
     })
