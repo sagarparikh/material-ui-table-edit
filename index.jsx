@@ -4,7 +4,7 @@ const ModeEdit = require('material-ui/svg-icons/editor/mode-edit').default
 const Check = require('material-ui/svg-icons/navigation/check').default
 const times = require('lodash.times')
 const mobx_react = require('mobx-react');
-const {IconButton, Toggle, TextField, RaisedButton} = mui
+const {IconButton, Toggle, TextField, RaisedButton, FlatButton} = mui
 
 module.exports = mobx_react.observer(React.createClass({
   getDefaultProps: () => {
@@ -88,6 +88,10 @@ module.exports = mobx_react.observer(React.createClass({
         }
       }
     }
+
+		if(typ == 'FlatButton'){
+			return <FlatButton label="Manage" />	
+		}
 
     return <TextField
       id={textFieldId}
@@ -210,7 +214,7 @@ module.exports = mobx_react.observer(React.createClass({
       marginTop: 10
     }
 
-    const rows = this.state.rows
+    @observer rows = this.state.rows
     const columnTypes = this.props.headerColumns.map((header) => {
       return header.type
     })
