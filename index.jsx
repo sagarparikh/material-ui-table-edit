@@ -17,7 +17,7 @@ module.exports = mobx_react.observer(React.createClass({
 
   getInitialState: function () {
     return {
-      rows: this.props.rows,
+      rows: this.props.rows || [],
       hoverValue: false,
       currentRow: false
     }
@@ -216,7 +216,7 @@ module.exports = mobx_react.observer(React.createClass({
       marginTop: 10
     }
 
-    let rows = mobx_react.observer(this.state.rows);
+    let rows = this.state.rows;
     const columnTypes = this.props.headerColumns.map((header) => {
       return header.type
     })
@@ -243,7 +243,7 @@ module.exports = mobx_react.observer(React.createClass({
       updatedRows.push({columns: newColumns, selected: true})
       self.setState({rows: updatedRows})
     }
-
+		
     return (
       <div className='container' style={style}>
       {this.renderHeader()}
