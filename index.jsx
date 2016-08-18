@@ -37,8 +37,11 @@ module.exports = mobx_react.observer(React.createClass({
   getCellValue: function (cell) {
     const self = this
     const id = cell && cell.id
+		const headerColValue = this.props.headerColumns.map((header) => {
+			return header.value
+    })[id]
     const type = this.props.headerColumns.map((header) => {
-      return header.type
+			return header.type
     })[id]
     const selected = cell && cell.selected
     const value = cell && cell.value
@@ -88,9 +91,9 @@ module.exports = mobx_react.observer(React.createClass({
       }
     }
 		if(type == 'FlatButton'){
-		return <FlatButton label={"Manage"} secondary={true}
+		return <FlatButton label={headerColValue} secondary={true}
 									onClick={()=>{
-										this.props.actionCallback(value, cell);							
+										this.props.actionCallback(value, cell, headerColValue);							
 									}}
 							/>	
 		}
