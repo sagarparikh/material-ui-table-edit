@@ -50,7 +50,8 @@ module.exports = mobx_react.observer(React.createClass({
     const width = cell && cell.width
     const textFieldId = [id, rowId, header].join('-')
     const textFieldStyle = {
-      width: width
+      width: width,
+			textOverflow:'elipsis',
     }
 
     const onTextFieldChange = (e) => {
@@ -126,7 +127,8 @@ module.exports = mobx_react.observer(React.createClass({
       padding: row.header ? 0 : 12,
       border: 0,
       borderBottom: '1px solid #ccc',
-      height: 50
+      height: 50,
+			backgroundColor:row.header?'#FFF':'none'
     }
     const checkboxStyle = {
       display: 'flex',
@@ -168,7 +170,7 @@ module.exports = mobx_react.observer(React.createClass({
         </IconButton>
 
     return (
-      <div key={rowKey} className='row' style={rowStyle}>
+      <div key={rowKey} className='row' style={rowStyle} id={row.header?'rowHeader':rowKey}>
         {checkbox}
         {columns.map((column, id) => {
           const width = this.props.headerColumns.map((header) => {
