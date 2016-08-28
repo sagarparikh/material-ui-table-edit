@@ -5,6 +5,7 @@ const Check = require('material-ui/svg-icons/navigation/check').default
 const times = require('lodash.times')
 const mobx_react = require('mobx-react');
 const {IconButton, Toggle, TextField, RaisedButton, FlatButton} = mui
+const mobx = require('mobx');
 
 module.exports = mobx_react.observer(React.createClass({
   getDefaultProps: () => {
@@ -245,8 +246,15 @@ module.exports = mobx_react.observer(React.createClass({
         }
         return row
       })
-      updatedRows.push({columns: newColumns, selected: true})
-      self.setState({rows: updatedRows})
+			self.props.addTempObject({columns:newColumns,selected:true})
+      //updatedRows.push({columns: newColumns, selected: true})
+      //self.setState({rows: updatedRows})
+
+				/*rows.map((row,index,arr) => {
+					self.update();
+					arr[i].selected = false;
+				})
+				self.props.rows.push({columns:newColumns, selected:true});*/
     }
 		
     return (
